@@ -8,6 +8,9 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Pesquisa Matchfood</title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
         <input type="text" name="pesquisa" onkeypress="VerificaTecla(event)">

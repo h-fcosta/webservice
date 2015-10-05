@@ -1,11 +1,9 @@
 function VerificaTecla(event) {
-    var x = event.keyCode; 
-    console.log(x);
-    /*if (event.keyCode === 13) {
-        var query = $('input[name=pesquisa]').val();
-        alert(query);
-        //pesquisaTags(query);
-    }*/
+    var query = "";
+    if (event.keyCode === 13) {
+        query = $('input[name=pesquisa]').val();
+        pesquisaTags(query);
+    }
 }
 
 function carregarTudo() {
@@ -71,8 +69,9 @@ function pesquisaTags(query) {
                     itens += "<td>" + retorno[i].NomeRec + "</td>";
                     itens += "<td>" + retorno[i].Tipo + "</td>";
                     itens += "<td>" + retorno[i].Origem + "</td>";
+                    itens += "</tr>";
                 }
-                $("resultado").html(itens);
+                $("#resultado").html(itens);
                 $("h2").html("Carregado");
             }
         }
