@@ -15,7 +15,7 @@ and open the template in the editor.
     <body>
         <input type="text" name="pesquisa" onkeypress="VerificaTecla(event)">
         <div>
-            <table id="resultado">
+            <table id="resultado" border="1">
                 
             </table>
             <h2></h2>
