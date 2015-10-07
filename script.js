@@ -71,7 +71,6 @@ function pesquisaTags(query) {
                     itens += "<td>" + retorno[i].Tipo + "</td>";
                     itens += "<td>" + retorno[i].Origem + "</td>";
                     itens += "</tr>";
-                    console.log(receita(id));
                 }
                 $("#resultado").html(itens);
                 $("h2").html("Carregado");
@@ -82,7 +81,7 @@ function pesquisaTags(query) {
 
 function receita(id) {
     var itens = "";
-    //var id = pesquisaTags(id);
+    
     jQuery.ajax({
         type:'get',
         url: 'dados.php?q=receita&id=' + id,
