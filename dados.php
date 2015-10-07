@@ -11,7 +11,7 @@ $result = array('status' => 'false');
 if ($action == 'pesquisaTags') {
     @$cons = $_GET['tags'];
 
-    $query = mysql_query("SELECT NomeRec, Tipo, Origem FROM matchfood.receitas where tag1 LIKE '%" . $cons . "%' or tag2 LIKE '%" . $cons . "%' or tag3 LIKE '%" . $cons . "%'
+    $query = mysql_query("SELECT idReceitas, NomeRec, Tipo, Origem FROM matchfood.receitas where tag1 LIKE '%" . $cons . "%' or tag2 LIKE '%" . $cons . "%' or tag3 LIKE '%" . $cons . "%'
                         or tag4 LIKE '%" . $cons . "%' or tag5 LIKE '%" . $cons . "%' or tag6 LIKE '%" . $cons . "%' or tag7 LIKE '%" . $cons . "%' or tag8 LIKE '%" . $cons . "%'
                         or tag9 LIKE '%" . $cons . "%' or tag10 LIKE '%" . $cons . "%';");
     $num = mysql_num_rows($query);
@@ -27,6 +27,18 @@ if ($action == 'listaReceitas') {
     for ($i = 0; $i < $num; $i++) {
         $dados[] = mysql_fetch_assoc($sql);
     }
-}
+}else
+    if($action == 'receita'){
+        @$id = $_GET['id'];
+        
+        $query = mysql_query("SELECT Foto, NomeRec, Tipo, Origem, Ingredientes, Modo FROM receitas where idReceitas = '$id';");
+         
+        $num = mysql_num_rows($query);
+        
+        for($i = 0; $i<$num;$i++){
+            $dados[] = mysql_fetch_assoc($query);
+            echo $dados;
+        }
+    }
 
 echo json_encode($dados, JSON_PRETTY_PRINT);

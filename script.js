@@ -65,13 +65,45 @@ function pesquisaTags(query) {
                 $("h2").html(retorno[0].erro);
             } else {
                 for (var i = 0; i < retorno.length; i++) {
+                    var id = retorno[i].idReceitas;
                     itens += "<tr>";
-                    itens += "<td>" + retorno[i].NomeRec + "</td>";
+                    itens += '<td><a href="receita.php?id=' + id + '">' + retorno[i].NomeRec + "</td>";
                     itens += "<td>" + retorno[i].Tipo + "</td>";
                     itens += "<td>" + retorno[i].Origem + "</td>";
                     itens += "</tr>";
+                    console.log(receita(id));
                 }
                 $("#resultado").html(itens);
+                $("h2").html("Carregado");
+            }
+        }
+    });
+}
+
+function receita(id) {
+    var itens = "";
+    //var id = pesquisaTags(id);
+    jQuery.ajax({
+        type:'get',
+        url: 'dados.php?q=receita&id=' + id,
+        cache: false,
+        dataType: "json",
+        contentType: 'utf-8',
+        success: function(retorno){
+            if(retorno[0].erro){
+                $("h2").html(retorno[0].erro);
+            }else{
+                for(var i= 0; i<retorno.length; i++){
+                    itens += "<tr>";
+                    itens += "<td>" + retorno[i].Foto + "</td>";
+                    itens += "<td>" + retorno[i].NomeRec + "</td>";
+                    itens += "<td>" + retorno[i].Tipo + "</td>";
+                    itens += "<td>" + retorno[i].Origem + "</td>";
+                    itens += "<td>" + retorno[i].Ingredientes + "</td>";
+                    itens += "<td>" + retorno[i].Modo + "</td>";
+                    itens += "</tr>";
+                }
+                $("#receita").html(itens);
                 $("h2").html("Carregado");
             }
         }
