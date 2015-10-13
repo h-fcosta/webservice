@@ -37,7 +37,6 @@ if ($action == 'listaReceitas') {
         
         for($i = 0; $i<$num;$i++){
             $dados[] = mysql_fetch_assoc($query);
-            echo $dados;
         }
     }
 

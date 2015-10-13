@@ -13,6 +13,12 @@ and open the template in the editor.
         <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
+        <?php
+        $id=$_GET['id'];
+        echo "<script>
+                receita($id);
+              </script>";
+        ?>
         <h2></h2>
         <table id="receita" border="1">
             
